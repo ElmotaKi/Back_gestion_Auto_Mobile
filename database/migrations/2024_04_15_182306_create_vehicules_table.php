@@ -32,7 +32,6 @@ return new class extends Migration
             $table->integer('placeAssure');
             $table->string('typeCarburant');
             $table->foreignId('id_agence')->constrained('agence_locations')->onDelete('cascade');
-            $table->foreignId('id_location')->constrained('locations')->onDelete('cascade');
             $table->foreignId('id_parking')->constrained('parkings')->onDelete('cascade');
         });
     }

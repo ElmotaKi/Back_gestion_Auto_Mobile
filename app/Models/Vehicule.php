@@ -15,7 +15,7 @@ class Vehicule extends Model
 
     public function location()
     {
-        return $this->belongsTo(Location::class);
+        return $this->hasMany(Location::class);
     }
 
     public function parking()

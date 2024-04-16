@@ -21,10 +21,11 @@ return new class extends Migration
             $table->enum('status',['Complete','encours']);
             $table->date('DateRetourPrevue');
             $table->date('DateRetourVoiture')->nullable();
-            $table->foreignId('agent_id')->constrained('agents')->onDelete('cascade');
-            $table->foreignId('clientParticulier_id')->constrained('client_particuliers')->onDelete('cascade');
-            $table->foreignId('societe_id')->constrained('societes')->onDelete('cascade');
-            $table->foreignId('contrat_id')->constrained('contrats')->onDelete('cascade');
+            $table->foreignId('id_vehicule')->constrained('vehicules')->onDelete('cascade');
+            $table->foreignId('id_contrat')->constrained('contrats')->onDelete('cascade');
+            $table->foreignId('id_agent')->constrained('agents')->onDelete('cascade');
+            $table->foreignId('id_clientParticulier')->constrained('client_particuliers')->onDelete('cascade');
+            $table->foreignId('id_societe')->constrained('societes')->onDelete('cascade');
         });
     }
 

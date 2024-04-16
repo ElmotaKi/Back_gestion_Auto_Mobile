@@ -39,6 +39,6 @@ class Location extends Model
 
     public function vehicules()
     {
-        return $this->hasMany(Vehicule::class);
+        return $this->belongsTo(Vehicule::class);
     }
 }
