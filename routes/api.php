@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AgenceLocationController;
+use App\Http\Controllers\AgentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
