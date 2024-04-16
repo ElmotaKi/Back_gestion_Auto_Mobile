@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Droit\StoreDroitRequest;
+use App\Http\Requests\Droit\UpdateDroitRequest;
 use Illuminate\Http\Request;
 
 class DroitController extends Controller
@@ -17,7 +19,7 @@ class DroitController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDroitRequest $request)
     {
         //
     }
@@ -33,7 +35,7 @@ class DroitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateDroitRequest $request, string $id)
     {
         //
     }

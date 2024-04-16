@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Vehicule\StoreVehiculeRequest;
+use App\Http\Requests\Vehicule\UpdateVehiculeRequest;
 use Illuminate\Http\Request;
 
 class VehiculeController extends Controller
@@ -17,7 +19,7 @@ class VehiculeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreVehiculeRequest $request)
     {
         //
     }
@@ -33,7 +35,7 @@ class VehiculeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateVehiculeRequest $request, string $id)
     {
         //
     }

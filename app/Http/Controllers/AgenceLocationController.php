@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AgenceLocation\StoreAgenceLocationRequest;
+use App\Http\Requests\AgenceLocation\UpdateAgenceLocationRequest;
 use Illuminate\Http\Request;
 
 class AgenceLocationController extends Controller
@@ -17,7 +19,7 @@ class AgenceLocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAgenceLocationRequest $request)
     {
         //
     }
@@ -33,7 +35,7 @@ class AgenceLocationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update( UpdateAgenceLocationRequest $request, string $id)
     {
         //
     }

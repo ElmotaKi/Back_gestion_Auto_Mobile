@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Vidange\StoreVidangeRequest;
+use App\Http\Requests\Vidange\UpdateVidangeRequest;
 use Illuminate\Http\Request;
 
 class VidangeController extends Controller
@@ -17,7 +19,7 @@ class VidangeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreVidangeRequest $request)
     {
         //
     }
@@ -33,7 +35,7 @@ class VidangeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateVidangeRequest $request, string $id)
     {
         //
     }

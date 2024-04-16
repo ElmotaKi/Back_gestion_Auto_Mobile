@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Paiement\StorePaiementRequest;
+use App\Http\Requests\Paiement\UpdatePaiementRequest;
 use Illuminate\Http\Request;
 
 class PaiementController extends Controller
@@ -17,7 +19,7 @@ class PaiementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePaiementRequest $request)
     {
         //
     }
@@ -33,7 +35,7 @@ class PaiementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePaiementRequest $request, string $id)
     {
         //
     }

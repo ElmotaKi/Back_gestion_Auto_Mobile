@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Agent\StoreAgentRequest;
+use App\Http\Requests\Agent\UpdateAgentRequest;
 use Illuminate\Http\Request;
 
 class AgentController extends Controller
@@ -17,7 +19,7 @@ class AgentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAgentRequest $request)
     {
         //
     }
@@ -33,7 +35,7 @@ class AgentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateAgentRequest $request, string $id)
     {
         //
     }
