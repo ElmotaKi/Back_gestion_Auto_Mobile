@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreignId('agent_id')->constrained('agents')->onDelete('cascade');
             $table->foreignId('clientParticulier_id')->constrained('client_particuliers')->onDelete('cascade');
             $table->foreignId('societe_id')->constrained('societes')->onDelete('cascade');
+            $table->foreignId('contrat_id')->constrained('contrats')->onDelete('cascade');
         });
     }
 

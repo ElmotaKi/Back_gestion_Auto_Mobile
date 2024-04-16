@@ -27,6 +27,10 @@ return new class extends Migration
             $table->decimal('Montant', 8, 2);
             $table->decimal('MontantRestantApayer', 8, 2);
             $table->text('ImageVoiture');
+            $table->enum('typeBoiteVitesse',['manuelle','automatique']);
+            $table->year('annee');
+            $table->integer('placeAssure');
+            $table->string('typeCarburant');
             $table->foreignId('id_agence')->constrained('agence_locations')->onDelete('cascade');
             $table->foreignId('id_location')->constrained('locations')->onDelete('cascade');
             $table->foreignId('id_parking')->constrained('parkings')->onDelete('cascade');
