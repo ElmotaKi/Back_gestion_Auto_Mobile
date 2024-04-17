@@ -18,6 +18,8 @@ return new class extends Migration
             $table->date('date_vignette');
             $table->date('date_expiration_vignette');
             $table->foreignId('id_vehicule')->constrained('vehicules')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

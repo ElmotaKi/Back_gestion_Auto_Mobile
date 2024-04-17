@@ -18,6 +18,8 @@ return new class extends Migration
             $table->boolean('Modifier');
             $table->boolean('Supprimer');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

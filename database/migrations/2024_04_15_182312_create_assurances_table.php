@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date('date_assurance');
             $table->date('date_expiration_assurance');
             $table->foreignId('id_vehicule')->constrained('vehicules')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

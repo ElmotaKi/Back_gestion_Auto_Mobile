@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date('date_alerte');
             $table->enum('status', ['Resolu', 'nonResolu']);
             $table->foreignId('id_vehicule')->constrained('vehicules')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

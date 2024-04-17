@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('Cout');
             $table->decimal('KilometrageDerniereVidange',10,2);
             $table->foreignId('id_vehicule')->constrained('vehicules')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('NomDocument');
             $table->string('CheminDocument');
             $table->foreignId('id_location')->constrained('locations')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

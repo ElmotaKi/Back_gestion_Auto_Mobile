@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('kilometrage_depart');
             $table->integer('kilometrage_arrivee');
             $table->foreignId('id_vehicule')->constrained('vehicules')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

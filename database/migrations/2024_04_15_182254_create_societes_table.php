@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('NumeroFiscale');
             $table->string('RegistreCommercial');
             $table->string('AdresseSociete');
+            $table->timestamps();
+
         });
     }
 

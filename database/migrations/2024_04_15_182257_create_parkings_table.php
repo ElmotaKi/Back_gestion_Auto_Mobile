@@ -16,6 +16,8 @@ return new class extends Migration
             $table->integer('Capacite');
             $table->string('pannes');
             $table->integer('PlaceRestantes');
+            $table->timestamps();
+
         });
     }
 

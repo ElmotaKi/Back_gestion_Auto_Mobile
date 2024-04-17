@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('AdresseAgent');
             $table->string('VilleAgent');
             $table->string('CodePostalAgent');
+            $table->foreignId('id_agence')->constrained('agence_locations')->onDelete('cascade');
             $table->timestamps();
         });
     }

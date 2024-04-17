@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('CodePostalAgence');
             $table->string('TelAgence');
             $table->string('EmailAgence')->unique();
+            $table->timestamps();
         });
     }
 
