@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Commercial\StoreCommercialRequest;
 use App\Http\Requests\Commercial\UpdateCommercialRequest;
+use App\Http\Requests\CommercialRequest;
 use Illuminate\Http\Request;
 
 class CommercialController extends Controller
@@ -19,7 +20,7 @@ class CommercialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCommercialRequest $request)
+    public function store(CommercialRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class CommercialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCommercialRequest $request, string $id)
+    public function update(CommercialRequest $request, string $id)
     {
         //
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Contrat\StoreContratRequest;
 use App\Http\Requests\Contrat\UpdateContratRequest;
+use App\Http\Requests\ContratRequest;
 use Illuminate\Http\Request;
 
 class ContratController extends Controller
@@ -19,7 +20,7 @@ class ContratController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreContratRequest $request)
+    public function store(ContratRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class ContratController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContratRequest $request, string $id)
+    public function update(ContratRequest $request, string $id)
     {
         //
     }

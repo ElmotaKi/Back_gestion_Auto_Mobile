@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Vignette\StoreVignetteRequest;
 use App\Http\Requests\Vignette\UpdateVignetteRequest;
+use App\Http\Requests\VignetteRequest;
 use Illuminate\Http\Request;
 
 class VignetteController extends Controller
@@ -19,7 +20,7 @@ class VignetteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVignetteRequest $request)
+    public function store(VignetteRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class VignetteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVignetteRequest $request, string $id)
+    public function update(VignetteRequest $request, string $id)
     {
         //
     }

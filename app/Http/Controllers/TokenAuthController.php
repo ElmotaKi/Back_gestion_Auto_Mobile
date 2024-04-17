@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TokenAuth\StoreTokenAuthRequest;
 use App\Http\Requests\TokenAuth\UpdateTokenAuthRequest;
+use App\Http\Requests\TokenAuthRequest;
 use Illuminate\Http\Request;
 
 class TokenAuthController extends Controller
@@ -19,7 +20,7 @@ class TokenAuthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTokenAuthRequest $request)
+    public function store(TokenAuthRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class TokenAuthController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTokenAuthRequest $request, string $id)
+    public function update(TokenAuthRequest $request, string $id)
     {
         //
     }

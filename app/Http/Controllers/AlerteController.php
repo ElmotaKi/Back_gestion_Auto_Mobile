@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Alerte\StoreAlerteRequest;
 use App\Http\Requests\Alerte\UpdateAlerteRequest;
+use App\Http\Requests\AlerteRequest;
 use Illuminate\Http\Request;
 
 class AlerteController extends Controller
@@ -19,7 +20,7 @@ class AlerteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAlerteRequest $request)
+    public function store(AlerteRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class AlerteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAlerteRequest $request, string $id)
+    public function update(AlerteRequest $request, string $id)
     {
         //
     }

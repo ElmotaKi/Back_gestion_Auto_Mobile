@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientParticulier\StoreClientParticulierRequest;
 use App\Http\Requests\ClientParticulier\UpdateClientParticulierRequest;
+use App\Http\Requests\ClientParticulierRequest;
 use Illuminate\Http\Request;
 
 class ClientParticulierController extends Controller
@@ -19,7 +20,7 @@ class ClientParticulierController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClientParticulierRequest $request)
+    public function store(ClientParticulierRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class ClientParticulierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClientParticulierRequest $request, string $id)
+    public function update(ClientParticulierRequest $request, string $id)
     {
         //
     }

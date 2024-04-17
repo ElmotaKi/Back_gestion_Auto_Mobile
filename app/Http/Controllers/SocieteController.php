@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Societe\StoreSocieteRequest;
 use App\Http\Requests\Societe\UpdateSocieteRequest;
+use App\Http\Requests\SocieteRequest;
 use Illuminate\Http\Request;
 
 class SocieteController extends Controller
@@ -19,7 +20,7 @@ class SocieteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSocieteRequest $request)
+    public function store(SocieteRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class SocieteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSocieteRequest $request, string $id)
+    public function update(SocieteRequest $request, string $id)
     {
         //
     }

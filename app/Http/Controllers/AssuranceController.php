@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Assurance\StoreAssuranceRequest;
 use App\Http\Requests\Assurance\UpdateAssuranceRequest;
+use App\Http\Requests\AssuranceRequest;
 use Illuminate\Http\Request;
 
 class AssuranceController extends Controller
@@ -19,7 +20,7 @@ class AssuranceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAssuranceRequest $request)
+    public function store(AssuranceRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class AssuranceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAssuranceRequest $request, string $id)
+    public function update(AssuranceRequest $request, string $id)
     {
         //
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DocumentsLocation\StoreDocumentsLocationRequest;
 use App\Http\Requests\DocumentsLocation\UpdateDocumentsLocationRequest;
+use App\Http\Requests\DocumentsLocationRequest;
 use Illuminate\Http\Request;
 
 class DocumentsLocationController extends Controller
@@ -19,7 +20,7 @@ class DocumentsLocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDocumentsLocationRequest $request)
+    public function store(DocumentsLocationRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class DocumentsLocationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDocumentsLocationRequest $request, string $id)
+    public function update(DocumentsLocationRequest $request, string $id)
     {
         //
     }

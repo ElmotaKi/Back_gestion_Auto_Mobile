@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Location\StoreLocationRequest;
 use App\Http\Requests\Location\UpdateLocationRequest;
+use App\Http\Requests\LocationRequest;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -19,7 +20,7 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLocationRequest $request)
+    public function store(LocationRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class LocationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLocationRequest $request, string $id)
+    public function update(LocationRequest $request, string $id)
     {
         //
     }

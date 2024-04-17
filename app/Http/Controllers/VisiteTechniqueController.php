@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VisiteTechnique\StoreVisiteTechniqueRequest;
 use App\Http\Requests\VisiteTechnique\UpdateVisiteTechniqueRequest;
+use App\Http\Requests\VisiteTechniqueRequest;
 use Illuminate\Http\Request;
 
 class VisiteTechniqueController extends Controller
@@ -19,7 +20,7 @@ class VisiteTechniqueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVisiteTechniqueRequest $request)
+    public function store(VisiteTechniqueRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class VisiteTechniqueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVisiteTechniqueRequest $request, string $id)
+    public function update(VisiteTechniqueRequest $request, string $id)
     {
         //
     }
