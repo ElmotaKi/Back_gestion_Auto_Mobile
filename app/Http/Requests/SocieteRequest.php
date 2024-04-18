@@ -17,6 +17,13 @@ class SocieteRequest extends FormRequest
             // Règles de validation pour la création
             return [
                 // Ajoutez ici les règles de validation pour les champs de création
+            'RaisonSocial'=>'required',
+            'ICE'=>'required',
+            'NumeroCNSS'=>'required',
+            'NumeroFiscale'=>'required',
+            'RegistreCommercial'=>'required',
+            'AdresseSociete'=>'required'
+
             ];
         } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
             // Règles de validation pour la mise à jour
