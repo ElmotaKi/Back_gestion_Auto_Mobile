@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Parking extends Model
 {
     use HasFactory;
+    protected $guarded=["id"];
     public function vehicules()
     {
         return $this->hasMany(Vehicule::class);

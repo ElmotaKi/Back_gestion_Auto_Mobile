@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\AgenceLocationController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\ParkingController;
+use App\Http\Controllers\VehiculeController;
+use App\Models\Parking;
+use App\Models\Vehicule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -22,6 +26,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
+    "vehicules"=>VehiculeController::class,
+    "parkings"=>ParkingController::class,
     "agences"=>AgenceLocationController::class,
     "agents"=>AgentController::class
 ]);

@@ -2,50 +2,77 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Parking\StoreParkingRequest;
-use App\Http\Requests\Parking\UpdateParkingRequest;
 use App\Http\Requests\ParkingRequest;
-use Illuminate\Http\Request;
+use App\Models\Parking;
 
 class ParkingController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Afficher la liste des parkings.
      */
     public function index()
     {
-        //
+        try {
+            $parkings = Parking::all();
+            return response()->json($parkings, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Stocker un nouveau parking.
      */
     public function store(ParkingRequest $request)
     {
-        //
+        try {
+            $validatedData = $request->validate($request->rules());
+            $parking = Parking::create($validatedData);
+            return response()->json($parking, 201);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
-     * Display the specified resource.
+     * Afficher les détails d'un parking spécifique.
      */
     public function show(string $id)
     {
-        //
+        try {
+            $parking = Parking::findOrFail($id);
+            return response()->json($parking, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Parking non trouvé'], 404);
+        }
     }
 
     /**
-     * Update the specified resource in storage.
+     * Mettre à jour les détails d'un parking spécifique.
      */
     public function update(ParkingRequest $request, string $id)
     {
-        //
+        try {
+            $parking = Parking::findOrFail($id);
+            $validatedData = $request->validate($request->rules());
+            $parking->update($validatedData);
+            return response()->json($parking, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprimer un parking spécifique.
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $parking = Parking::findOrFail($id);
+            $parking->delete();
+            return response()->json(['message' => 'Parking supprimé avec succès'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

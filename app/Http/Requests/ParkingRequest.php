@@ -16,12 +16,16 @@ class ParkingRequest extends FormRequest
         if ($this->isMethod('post')) {
             // Règles de validation pour la création
             return [
-                // Ajoutez ici les règles de validation pour les champs de création
+                 'Capacite' => 'required|integer',
+                 'pannes' => 'nullable|string',
+                 'PlaceRestantes' => 'required|integer',
             ];
         } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
             // Règles de validation pour la mise à jour
             return [
-                // Ajoutez ici les règles de validation pour les champs de mise à jour
+                 'Capacite' => 'integer',
+                 'pannes' => 'nullable|string',
+                 'PlaceRestantes' => 'integer',
             ];
         }
 
