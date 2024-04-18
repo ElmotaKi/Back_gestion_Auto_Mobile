@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AgenceLocation extends Model
 {
     use HasFactory;
+    protected $fillable = ['NomAgence', 'AdresseAgence', 'VilleAgence', 'CodePostalAgence', 'TelAgence', 'EmailAgence'];
     public function agents()
     {
         return $this->hasMany(Agent::class);

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AgenceLocationRequest;
-use App\Http\Requests\Agent\StoreAgentRequest;
-use App\Http\Requests\Agent\UpdateAgentRequest;
+use App\Http\Requests\AgentRequest;
+use App\Models\Agent;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class AgentController extends Controller
@@ -14,15 +14,28 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $agents = Agent::all();
+            return response()->json(['agents' => $agents], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'An error occurred while fetching agencies', 'error' => $e->getMessage()], 500);
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AgenceLocationRequest $request)
+    public function store(AgentRequest $request)
     {
-        //
+        try {
+            $validatedData = $request->validate($request->rules());
+            $agent = Agent::create($validatedData);
+            return response()->json(['agent' => $agent], 201);
+        } catch (QueryException $e) {
+            return response()->json(['message' => 'Error creating agent', 'error' => $e->getMessage()], 500);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Validation error', 'error' => $e->getMessage()], 422);
+        }
     }
 
     /**
@@ -30,15 +43,29 @@ class AgentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            $agent = Agent::findOrFail($id);
+            return response()->json(['agent' => $agent], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'agent not found', 'error' => $e->getMessage()], 404);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(AgenceLocationRequest $request, string $id)
+    public function update(AgentRequest $request, string $id)
     {
-        //
+        try {
+            $agent = Agent::findOrFail($id);
+            $validatedData = $request->validate($request->rules());
+            $agent->update($validatedData);
+            return response()->json(['agent' => $agent], 200);
+        } catch (QueryException $e) {
+            return response()->json(['message' => 'Error updating agent', 'error' => $e->getMessage()], 500);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Validation error', 'error' => $e->getMessage()], 422);
+        }
     }
 
     /**
@@ -46,6 +73,12 @@ class AgentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $agent = Agent::findOrFail($id);
+            $agent->delete();
+            return response()->json(['message' => 'Agency deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'An error occurred while deleting the agency', 'error' => $e->getMessage()], 500);
+        }
     }
 }
