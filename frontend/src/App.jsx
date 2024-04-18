@@ -1,11 +1,11 @@
 // App.jsx
 import React from 'react';
-import Login from './components/LoginSignup/Login'; // Assuming Login.jsx is in the same directory
+import Login from './components/LoginSignup/Login'; 
 
 function App() {
   return (
     <div>
-      <h1>Your App</h1>
+      <h1>Mon appli</h1>
       <Login />
     </div>
   );

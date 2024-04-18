@@ -28,3 +28,7 @@ Route::apiResources([
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
+// Route::get('/csrf-cookie', function (Request $request) {
+//     return response()->json(['csrf_token' => csrf_token()]);
+// });
