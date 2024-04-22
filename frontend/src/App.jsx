@@ -1,14 +1,12 @@
-// App.jsx
-import React from 'react';
-import Login from './components/LoginSignup/Login';
+import { Button } from "./components/ui/button"
 
 function App() {
+
   return (
-    <div>
-      <h1>Mon appli</h1>
-      <Login />
-    </div>
-  );
+    <>
+    <Button>Hello world</Button>
+    </>
+  )
 }
 
-export default App;
+export default App
