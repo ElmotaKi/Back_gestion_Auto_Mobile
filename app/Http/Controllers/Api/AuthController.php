@@ -93,4 +93,27 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+            /**
+         * Déconnexion de l'utilisateur
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
+         */
+        public function logoutUser(Request $request)
+        {
+            try {
+                $request->user()->tokens()->delete();
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Utilisateur déconnecté avec succès'
+                ], 200);
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $th->getMessage()
+                ], 500);
+            }
+        }
+
 }

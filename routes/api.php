@@ -34,6 +34,8 @@ Route::apiResources([
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
+Route::middleware('auth:sanctum')->post('/auth/logout', [AuthController::class, 'logoutUser']);
+
 
 // Route::get('/csrf-cookie', function (Request $request) {
 //     return response()->json(['csrf_token' => csrf_token()]);

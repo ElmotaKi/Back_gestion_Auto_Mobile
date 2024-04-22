@@ -3,9 +3,10 @@ import * as z from "zod";
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormField, FormItem, FormLabel, FormMessage } from "./../ui/form";
-import { Input } from "./../ui/input";
-import { Button } from "./../ui/button";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { Form, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 const formSchema = z.object({
   emailAddress: z.string(),
@@ -14,6 +15,7 @@ const formSchema = z.object({
 
 function Login() {
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -32,7 +34,12 @@ function Login() {
       }, {
         withCredentials: true
       });
-      console.log(response.data);
+
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+
+      // Redirect to dashboard route
+      navigate("/dashboard");
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         setError("Erreur: " + error.response.data.message);
