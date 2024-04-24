@@ -41,6 +41,6 @@ class CommercialRequest extends FormRequest
             ];
         }
 
-        return [];
+      
     }
 }

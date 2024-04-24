@@ -28,10 +28,14 @@ class SocieteRequest extends FormRequest
         } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
             // Règles de validation pour la mise à jour
             return [
-                // Ajoutez ici les règles de validation pour les champs de mise à jour
+                'RaisonSocial'=>'',
+            'ICE'=>'',
+            'NumeroCNSS'=>'',
+            'NumeroFiscale'=>'',
+            'RegistreCommercial'=>'',
+            'AdresseSociete'=>''// Ajoutez ici les règles de validation pour les champs de mise à jour
             ];
         }
 
-        return [];
     }
 }
