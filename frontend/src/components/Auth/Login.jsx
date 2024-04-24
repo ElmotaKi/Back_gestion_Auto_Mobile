@@ -50,7 +50,8 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div style={{transform:"translateY(50%)"}}>
+
       <div className="w-40p flex justify-center">
         <div className="max-w-sm p-4 bg-white rounded-lg shadow-md">
           {error && <p className="error-message">{error}</p>}
@@ -79,7 +80,8 @@ function Login() {
                   </FormItem>
                 )}
               ></FormField>
-              <Button type="submit">Envoyer</Button>
+              <div style={{marginTop:'8px'}}>
+              <Button  type="submit">Envoyer</Button></div>
             </form>
           </Form>
         </div>
