@@ -1,6 +1,6 @@
 import {cn} from "@/lib/utils"
-import {Button} from "../ui/button";
-
+import {Button} from "../../ui/button";
+import { Link } from 'react-router-dom';
 export function SideBar({className}) {
 
   return (
@@ -12,7 +12,8 @@ export function SideBar({className}) {
           </h2>
           <div className="space-y-1">
 
-            <Button variant="secondary" className="w-full justify-start">
+            <Link to={'acceuil'}>
+              <Button variant="secondary" className="w-full justify-start">
             <svg width="20px" height="20px" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5192 7.82274C2 8.77128 2 9.91549 2 12.2039V13.725C2 17.6258 2 19.5763 3.17157 20.7881C4.34315 22 6.22876 22 10 22H14C17.7712 22 19.6569 22 20.8284 20.7881C22 19.5763 22 17.6258 22 13.725V12.2039C22 9.91549 22 8.77128 21.4808 7.82274C20.9616 6.87421 20.0131 6.28551 18.116 5.10812L16.116 3.86687C14.1106 2.62229 13.1079 2 12 2C10.8921 2 9.88939 2.62229 7.88403 3.86687L5.88403 5.10813C3.98695 6.28551 3.0384 6.87421 2.5192 7.82274ZM9 17.25C8.58579 17.25 8.25 17.5858 8.25 18C8.25 18.4142 8.58579 18.75 9 18.75H15C15.4142 18.75 15.75 18.4142 15.75 18C15.75 17.5858 15.4142 17.25 15 17.25H9Z" fill="black"/>
             </svg>
@@ -20,13 +21,19 @@ export function SideBar({className}) {
 
               Acceuil
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            </Link>
+            
+            <Link to={'vehicules'}>
+<Button variant="ghost" className="w-full justify-start">
             <svg width="20px" height="20px" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 8L5.72187 10.2682C5.90158 10.418 6.12811 10.5 6.36205 10.5H17.6379C17.8719 10.5 18.0984 10.418 18.2781 10.2682L21 8M6.5 14H6.51M17.5 14H17.51M8.16065 4.5H15.8394C16.5571 4.5 17.2198 4.88457 17.5758 5.50772L20.473 10.5777C20.8183 11.1821 21 11.8661 21 12.5623V18.5C21 19.0523 20.5523 19.5 20 19.5H19C18.4477 19.5 18 19.0523 18 18.5V17.5H6V18.5C6 19.0523 5.55228 19.5 5 19.5H4C3.44772 19.5 3 19.0523 3 18.5V12.5623C3 11.8661 3.18166 11.1821 3.52703 10.5777L6.42416 5.50772C6.78024 4.88457 7.44293 4.5 8.16065 4.5ZM7 14C7 14.2761 6.77614 14.5 6.5 14.5C6.22386 14.5 6 14.2761 6 14C6 13.7239 6.22386 13.5 6.5 13.5C6.77614 13.5 7 13.7239 7 14ZM18 14C18 14.2761 17.7761 14.5 17.5 14.5C17.2239 14.5 17 14.2761 17 14C17 13.7239 17.2239 13.5 17.5 13.5C17.7761 13.5 18 13.7239 18 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               Vehicule
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            </Link>
+            
+            <Link to={'/parkings'}>
+<Button variant="ghost" className="w-full justify-start">
             <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 width="20px" height="20px" viewBox="0 0 169.676 169.676"
                 xml:space="preserve">
@@ -44,7 +51,10 @@ export function SideBar({className}) {
 
               Parking
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            </Link>
+            
+            <Link to={'/clients'}>
+<Button variant="ghost" className="w-full justify-start">
             <svg width="20px" height="20px" viewBox="0 0 320 283" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <g id="#000000ff">
                 <path fill="#000000" opacity="1.00" d=" M 148.46 2.54 C 168.51 -1.88 190.86 6.02 203.10 22.61 C 209.07 30.17 212.76 39.43 214.03 48.95 C 214.26 53.30 214.24 57.67 214.07 62.02 C 212.43 77.22 203.89 91.37 191.46 100.20 C 175.90 111.41 154.27 113.42 136.99 105.08 C 121.04 97.77 109.28 82.31 106.30 65.04 C 105.29 55.87 105.34 46.29 108.70 37.55 C 114.74 20.03 130.34 6.37 148.46 2.54 Z" />
@@ -57,7 +67,10 @@ export function SideBar({className}) {
                 </svg>
             Client
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            </Link>
+            
+            <Link to={'/agents'}>
+ <Button variant="ghost" className="w-full justify-start">
             <svg width="20px" height="20px" viewBox="0 0 274 325" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <g id="#000000ff">
                 <path fill="#000000" opacity="1.00" d=" M 106.80 11.74 C 114.88 5.67 124.99 2.86 135.00 2.52 C 145.90 2.17 156.95 4.05 166.95 8.46 C 171.20 10.50 175.70 12.67 178.52 16.61 C 181.38 20.33 183.56 25.01 188.09 27.00 C 192.54 28.96 197.91 30.26 200.37 34.93 C 206.69 46.16 206.06 59.67 204.86 72.08 C 204.12 79.07 202.97 86.02 202.01 92.99 C 204.01 93.34 206.01 93.67 208.01 94.01 C 210.73 105.91 209.10 118.77 203.88 129.77 C 202.22 133.97 197.92 135.95 195.03 139.13 C 191.54 146.10 191.95 154.57 187.30 161.05 C 177.37 176.06 162.30 189.13 144.04 191.95 C 131.32 193.87 118.57 188.92 108.64 181.19 C 98.20 173.17 90.16 162.22 85.07 150.13 C 83.47 146.40 84.69 142.01 82.70 138.39 C 80.98 135.49 78.12 133.55 75.86 131.11 C 72.52 127.86 71.64 123.08 70.21 118.83 C 68.50 112.24 66.72 105.18 68.54 98.43 C 69.41 95.09 72.65 93.03 75.98 92.92 C 73.81 80.46 68.72 67.71 72.58 55.04 C 77.83 36.83 91.72 22.51 106.80 11.74 Z" />
@@ -67,7 +80,10 @@ export function SideBar({className}) {
 
               Agent
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            </Link>
+           
+            <Link to={'/commercials'}>
+<Button variant="ghost" className="w-full justify-start">
             <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	         width="20px" height="20px" viewBox="0 0 256 200" enable-background="new 0 0 256 200" xml:space="preserve">
                 <path d="M50.499,29.645c0-15.079,12.063-27.239,27.239-27.239c15.079,0,27.239,12.16,27.239,27.239
@@ -83,12 +99,17 @@ export function SideBar({className}) {
                 </svg>
               Commercial
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            </Link>
+            
+            <Link to={''}>
+<Button variant="ghost" className="w-full justify-start">
             <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z" fill="black"/>
             </svg>
               Infos
             </Button>
+            </Link>
+            
           </div>
         </div>
         {/* <div className="px-3 py-2">

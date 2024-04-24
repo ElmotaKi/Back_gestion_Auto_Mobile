@@ -39,7 +39,7 @@ function Login() {
       localStorage.setItem('token', token);
 
       // Redirect to dashboard route
-      navigate("/dashboard");
+      navigate("/Acceuil");
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         setError("Erreur: " + error.response.data.message);
