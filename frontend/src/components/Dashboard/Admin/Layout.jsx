@@ -19,7 +19,7 @@ const Layout = () => {
         return <Navigate to="/" />;
     }
     return (
-      <div className="flex ...">
+      <div className="flex">
         <div className="flex-none w-14 h-14">
         <Drawer>
                 <DrawerTrigger>Ouvrir</DrawerTrigger>
@@ -35,7 +35,7 @@ const Layout = () => {
             <CustomAvatar/>
         </div>
         </div>
-       
+
     );
 };
 

@@ -3,7 +3,7 @@ import * as z from "zod";
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { Form, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -15,7 +15,7 @@ const formSchema = z.object({
 
 function Login() {
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -38,7 +38,6 @@ function Login() {
       const token = response.data.token;
       localStorage.setItem('token', token);
 
-      // Redirect to dashboard route
       navigate("/Acceuil");
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
@@ -64,6 +63,7 @@ function Login() {
                   <FormItem>
                     <FormLabel>Adresse Email</FormLabel>
                     <Input placeholder="adresse email" type="email" {...field} />
+                    
                     <FormMessage />
                   </FormItem>
                 )}
