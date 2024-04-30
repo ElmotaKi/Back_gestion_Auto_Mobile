@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AgenceLocationController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\CommercialController;
+use App\Http\Controllers\Exportation\ExportxlsxController;
 use App\Http\Controllers\ParkingController;
+use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\VehiculeController;
 use App\Models\Parking;
 use App\Models\Vehicule;
@@ -29,12 +32,20 @@ Route::apiResources([
     "vehicules"=>VehiculeController::class,
     "parkings"=>ParkingController::class,
     "agences"=>AgenceLocationController::class,
-    "agents"=>AgentController::class
+    "agents"=>AgentController::class,
+    "societes"=>SocieteController::class,
+    "commercials"=>CommercialController::class,
 ]);
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::middleware('auth:sanctum')->post('/auth/logout', [AuthController::class, 'logoutUser']);
+Route::post('/exportxlsx', [ExportxlsxController::class, 'exportAgentsXlsx'])->name('exportxlsx');
+Route::post('/exportpdf', [ExportxlsxController::class, 'exportAgentspdf'])->name('exportpdf');
+
+// Route::get('/export', [ExportxlsxController::class, 'exportAgents'])->name('export');
+
+
 
 
 // Route::get('/csrf-cookie', function (Request $request) {

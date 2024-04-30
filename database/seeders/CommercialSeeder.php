@@ -85,16 +85,7 @@ class CommercialSeeder extends Seeder
        'id_societe'=>'6',
     ],
 
-       ['CIN' => 'KL87654',
-       'Nom' => 'Müller',
-       'Prenom' => 'Hans',
-       'Sexe' => 'Masculin',
-       'DateNaissance' => Carbon::createFromFormat('d-m-Y', '23-04-2002')->toDateString(),
-        'Tel' => '0698765432',
-        'Adresse' => '678 Rue des Etoiles',
-        'Ville' => 'Berlin',
-        'id_societe'=>'7',
-        ]
+     
     ];
     // $count = 0;
 

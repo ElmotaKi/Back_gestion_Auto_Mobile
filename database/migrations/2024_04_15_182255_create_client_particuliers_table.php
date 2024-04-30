@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('client_particuliers', function (Blueprint $table) {
             $table->id();
-            $table->string('Nom');
-            $table->string('Prenom');
+            $table->string('Nom',50);
+            $table->string('Prenom',50);
             $table->unique(['Nom', 'Prenom']);
             $table->enum('Sexe', ['Masculin', 'Feminin']);            
-            $table->string('Email')->unique();
+            $table->string('Email',100)->unique();
             $table->date('DateNaissance');
             $table->string('Tel');
             $table->string('Adresse');

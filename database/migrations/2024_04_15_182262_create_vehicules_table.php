@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('Kilometrage',10,3);
             $table->string('Pneumatique');
             $table->string('NumeroDechassis');
-            $table->string('Immatriculation')->unique();
+            $table->string('Immatriculation',100)->unique();
             $table->date('DateD_achat');
             $table->integer('numeroDePlace');
             $table->boolean('Disponibilité');
