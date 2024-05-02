@@ -25,6 +25,7 @@ class CommercialRequest extends FormRequest
                 'Tel' => 'required',
                 'Adresse' => 'required',
                 'Ville' => 'required',
+                'id_societe'=>'required'
             ];
         } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
             // Règles de validation pour la mise à jour
@@ -38,6 +39,7 @@ class CommercialRequest extends FormRequest
                 'Tel' => '',
                 'Adresse' => '',
                 'Ville' => '',
+                'id_societe'=>''
             ];
         }
 

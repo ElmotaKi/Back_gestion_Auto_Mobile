@@ -10,6 +10,9 @@ use App\Models\Societe;
 
 class SocieteController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      */
@@ -52,18 +55,17 @@ class SocieteController extends Controller
      */
     public function update(SocieteRequest $request, string $id)
     {
-        
         $societe = Societe::findOrFail($id);
-        $inputsData=$request->validate($request->rules());
-        $societe = Societe::update($inputsData);
-        return response()->json($societe);
-        if (!$societe) {
-            return response()->json(['error' => 'Societe not found'], 404);
+        $inputsData = $request->validated(); // Utilisez validated() pour récupérer les données validées
+    
+        try {
+            $societe->update($inputsData); // Utilisez la méthode update sur l'instance de modèle
+            return response()->json($societe);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
         }
-
-       
     }
-
+    
     
 
     /**

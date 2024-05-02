@@ -38,6 +38,7 @@ Route::apiResources([
     "commercials"=>CommercialController::class
 ]);
 
+
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::middleware('auth:sanctum')->post('/auth/logout', [AuthController::class, 'logoutUser']);

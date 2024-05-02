@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Commercial\StoreCommercialRequest;
@@ -7,6 +6,7 @@ use App\Http\Requests\Commercial\UpdateCommercialRequest;
 use App\Http\Requests\CommercialRequest;
 use Illuminate\Http\Request;
 use App\Models\Commercial;
+use Illuminate\Support\Facades\Log; // Import Log facade
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
 
@@ -26,9 +26,14 @@ class CommercialController extends Controller
      */
     public function store(CommercialRequest $request)
     {
-        $inputsData=$request->validate($request->rules());
-        $commercial=Commercial::create($inputsData);
-        return response()->json($commercial);
+        try {
+            $inputsData = $request->validate($request->rules());
+            $commercial = Commercial::create($inputsData);
+            return response()->json($commercial);
+        } catch (\Exception $e) {
+            Log::error('Error in store method: ' . $e->getMessage());
+            return response()->json(['error' => 'An error occurred while storing the commercial.'], 500);
+        }
     }
 
     /**
@@ -38,7 +43,6 @@ class CommercialController extends Controller
     {
         $commercial = Commercial::find($id);
 
-    
         if (!$commercial) {
             return response()->json(['error' => 'Commercial not found'], 404);
         }
@@ -50,11 +54,16 @@ class CommercialController extends Controller
      * Update the specified resource in storage.
      */
     public function update(CommercialRequest $request, string $id)
-    {   $commercial = Commercial::findOrFail($id);
-        $inputsData=$request->validate($request->rules());
-        $commercial = Commercial::update($inputsData);
-        return response()->json($commercial);
-        
+    {
+        try {
+            $commercial = Commercial::findOrFail($id);
+            $inputsData = $request->validate($request->rules());
+            $commercial->update($inputsData);
+            return response()->json($commercial);
+        } catch (\Exception $e) {
+            Log::error('Error in update method: ' . $e->getMessage());
+            return response()->json(['error' => 'An error occurred while updating the commercial.'], 500);
+        }
     }
 
     /**
@@ -65,10 +74,10 @@ class CommercialController extends Controller
         try {
             $commercial = Commercial::findOrFail($id);
             $commercial->delete();
-
             return response()->json(['message' => 'Commercial deleted successfully'], 200);
-        }   catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        } 
+        } catch (\Exception $e) {
+            Log::error('Error in destroy method: ' . $e->getMessage());
+            return response()->json(['error' => 'An error occurred while deleting the commercial.'], 500);
+        }
     }
 }

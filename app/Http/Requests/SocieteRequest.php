@@ -16,26 +16,25 @@ class SocieteRequest extends FormRequest
         if ($this->isMethod('post')) {
             // Règles de validation pour la création
             return [
-                // Ajoutez ici les règles de validation pour les champs de création
-            'RaisonSocial'=>'required',
-            'ICE'=>'required',
-            'NumeroCNSS'=>'required',
-            'NumeroFiscale'=>'required',
-            'RegistreCommercial'=>'required',
-            'AdresseSociete'=>'required'
-
+                'RaisonSocial' => 'required',
+                'ICE' => 'required',
+                'NumeroCNSS' => 'required',
+                'NumeroFiscale' => 'required',
+                'RegistreCommercial' => 'required',
+                'AdresseSociete' => 'required'
             ];
         } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
             // Règles de validation pour la mise à jour
             return [
-                'RaisonSocial'=>'',
-            'ICE'=>'',
-            'NumeroCNSS'=>'',
-            'NumeroFiscale'=>'',
-            'RegistreCommercial'=>'',
-            'AdresseSociete'=>''// Ajoutez ici les règles de validation pour les champs de mise à jour
+                'RaisonSocial' => 'sometimes',
+                'ICE' => 'sometimes',
+                'NumeroCNSS' => 'sometimes',
+                'NumeroFiscale' => 'sometimes',
+                'RegistreCommercial' => 'sometimes',
+                'AdresseSociete' => 'sometimes'
             ];
         }
 
+        return [];
     }
 }
