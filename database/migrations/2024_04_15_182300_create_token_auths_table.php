@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('token_auths', function (Blueprint $table) {
             $table->id();
-            $table->string('token')->unique();
+            $table->string('token',100)->unique();
             $table->date('dateCreationToken');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->timestamps();

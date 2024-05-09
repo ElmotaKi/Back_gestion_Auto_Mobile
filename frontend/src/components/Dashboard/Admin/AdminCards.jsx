@@ -16,13 +16,13 @@ function AdminCards() {
           <Card >
             <CardHeader>
               <CardTitle>Chiffre d’affaires</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>
@@ -30,13 +30,13 @@ function AdminCards() {
           <Card>
             <CardHeader>
               <CardTitle>Parking</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>
@@ -44,13 +44,13 @@ function AdminCards() {
           <Card>
             <CardHeader>
               <CardTitle>Voitures Louées</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>
@@ -61,13 +61,13 @@ function AdminCards() {
           <Card>
             <CardHeader>
               <CardTitle>Clients</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>
@@ -75,13 +75,13 @@ function AdminCards() {
           <Card>
             <CardHeader>
               <CardTitle>Voitures</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>
@@ -89,13 +89,13 @@ function AdminCards() {
           <Card>
             <CardHeader>
               <CardTitle>Voitures Libres</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>
@@ -106,13 +106,13 @@ function AdminCards() {
           <Card>
             <CardHeader>
               <CardTitle>Agents</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>
@@ -120,13 +120,13 @@ function AdminCards() {
           <Card>
             <CardHeader>
               <CardTitle>Réservations</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>
@@ -134,13 +134,13 @@ function AdminCards() {
           <Card>
             <CardHeader>
               <CardTitle>Voitures en panne</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardDescription>Déscription</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>Contenu</p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Un footer</p>
             </CardFooter>
           </Card>
         </div>

@@ -42,6 +42,12 @@ Route::apiResources([
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::middleware('auth:sanctum')->post('/auth/logout', [AuthController::class, 'logoutUser']);
+Route::post('/exportxlsx', [ExportxlsxController::class, 'exportAgentsXlsx'])->name('exportxlsx');
+Route::post('/exportpdf', [ExportxlsxController::class, 'exportAgentspdf'])->name('exportpdf');
+
+// Route::get('/export', [ExportxlsxController::class, 'exportAgents'])->name('export');
+
+
 
 
 // Route::get('/csrf-cookie', function (Request $request) {

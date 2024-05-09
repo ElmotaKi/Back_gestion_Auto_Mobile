@@ -21,7 +21,7 @@ class Agent extends Model
     ];
     public function agenceLocation()
     {
-        return $this->belongsTo(AgenceLocation::class);
+        return $this->belongsTo(AgenceLocation::class, 'id_agence');
     }
 
     public function locations()

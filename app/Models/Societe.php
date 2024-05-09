@@ -13,6 +13,7 @@ class Societe extends Model
     {
         return $this->hasMany(Commercial::class);
     }
+    
     public function paiements()
     {
         return $this->hasMany(Paiement::class);

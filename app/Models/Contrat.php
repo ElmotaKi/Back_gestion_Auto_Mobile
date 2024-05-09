@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contrat extends Model
 {
     use HasFactory;
+    protected $guarded=[];
     public function locations(){
         return $this->hasMany(Location::class);
     }

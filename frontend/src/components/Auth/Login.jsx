@@ -3,7 +3,7 @@ import * as z from "zod";
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { Form, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -15,7 +15,7 @@ const formSchema = z.object({
 
 function Login() {
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -38,8 +38,7 @@ function Login() {
       const token = response.data.token;
       localStorage.setItem('token', token);
 
-      // Redirect to dashboard route
-      navigate("/dashboard");
+      navigate("/Acceuil");
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         setError("Erreur: " + error.response.data.message);
@@ -50,7 +49,8 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div style={{transform:"translateY(50%)"}}>
+
       <div className="w-40p flex justify-center">
         <div className="max-w-sm p-4 bg-white rounded-lg shadow-md">
           {error && <p className="error-message">{error}</p>}
@@ -63,6 +63,7 @@ function Login() {
                   <FormItem>
                     <FormLabel>Adresse Email</FormLabel>
                     <Input placeholder="adresse email" type="email" {...field} />
+                    
                     <FormMessage />
                   </FormItem>
                 )}
@@ -79,7 +80,8 @@ function Login() {
                   </FormItem>
                 )}
               ></FormField>
-              <Button type="submit">Envoyer</Button>
+              <div style={{marginTop:'8px'}}>
+              <Button  type="submit">Envoyer</Button></div>
             </form>
           </Form>
         </div>

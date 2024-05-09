@@ -11,6 +11,6 @@ class Commercial extends Model
     protected $guarded=[]; 
     public function societe()
     {
-        return $this->belongsTo(Societe::class);
+        return $this->belongsTo(Societe::class,'id_societe');
     }
 }

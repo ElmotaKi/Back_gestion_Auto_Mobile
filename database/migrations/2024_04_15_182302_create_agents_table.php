@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('NomAgent');
             $table->string('PrenomAgent');
             $table->enum('SexeAgent', ['Masculin', 'Feminin']);            
-            $table->string('EmailAgent')->unique();
+            $table->string('EmailAgent',100)->unique();
             $table->string('TelAgent');
             $table->string('AdresseAgent');
             $table->string('VilleAgent');

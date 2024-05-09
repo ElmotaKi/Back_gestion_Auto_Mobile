@@ -17,11 +17,19 @@ class ContratRequest extends FormRequest
             // Règles de validation pour la création
             return [
                 // Ajoutez ici les règles de validation pour les champs de création
+                'nomContrat' => 'required|string|max:50',
+                'typeContrat' => 'required|string|max:50',
+                'descriptionContrat' => 'required|string|max:255'
+         
             ];
         } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
             // Règles de validation pour la mise à jour
             return [
                 // Ajoutez ici les règles de validation pour les champs de mise à jour
+                'nomContrat' => 'string|max:100',
+                'typeContrat' => 'string|max:50',
+                'descriptionContrat' => 'string|max:255'
+           
             ];
         }
 
