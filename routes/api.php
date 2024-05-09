@@ -40,8 +40,9 @@ Route::apiResources([
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::middleware('auth:sanctum')->post('/auth/logout', [AuthController::class, 'logoutUser']);
-Route::post('/exportxlsx', [ExportxlsxController::class, 'exportAgentsXlsx'])->name('exportxlsx');
-Route::post('/exportpdf', [ExportxlsxController::class, 'exportAgentspdf'])->name('exportpdf');
+Route::post('/exportxlsx/{model}', [ExportxlsxController::class, 'exportAgentsXlsx'])->name('exportxlsx');
+Route::post('/exportpdf/{model}', [ExportxlsxController::class, 'exportAgentspdf'])->name('exportpdf');
+Route::post('/print/{model}', [ExportxlsxController::class, 'print'])->name('print');
 
 // Route::get('/export', [ExportxlsxController::class, 'exportAgents'])->name('export');
 
