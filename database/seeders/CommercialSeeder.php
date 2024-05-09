@@ -85,7 +85,7 @@ class CommercialSeeder extends Seeder
        'id_societe'=>'6',
     ],
 
-     
+       
     ];
     // $count = 0;
 

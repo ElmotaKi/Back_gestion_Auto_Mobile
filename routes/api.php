@@ -2,14 +2,18 @@
 
 use App\Http\Controllers\AgenceLocationController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\CommercialController;
+
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\Exportation\ExportxlsxController;
+
 use App\Http\Controllers\ParkingController;
-use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\VehiculeController;
 use App\Models\Parking;
 use App\Models\Vehicule;
+use App\Models\Societe;
+use App\Models\Commercial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -35,8 +39,9 @@ Route::apiResources([
     "agences"=>AgenceLocationController::class,
     "agents"=>AgentController::class,
     "societes"=>SocieteController::class,
-    "commercials"=>CommercialController::class,
+    "commercials"=>CommercialController::class
 ]);
+
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);

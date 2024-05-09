@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             VehiculeSeeder::class,
             AgentSeeder::class,
             SocieteSeeder::class,
-            CommercialSeeder::class
+            CommercialSeeder::class,
+            ClientParticulierSeeder::class,
+            ContratSeeder::class
             
         ]);
     }

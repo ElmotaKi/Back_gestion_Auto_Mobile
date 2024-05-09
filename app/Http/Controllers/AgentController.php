@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AgentRequest;
 use App\Models\Agent;
+use App\Models\AgenceLocation;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
@@ -44,12 +45,27 @@ class AgentController extends Controller
     public function show(string $id)
     {
         try {
-            $agent = Agent::findOrFail($id);
-            return response()->json(['agent' => $agent], 200);
+            $agent = Agent::with('agenceLocation')->findOrFail($id);
+            
+            $agent_agencelocation = [
+                'id'=>$agent->id,
+                'NomAgent' => $agent->NomAgent,
+                'PrenomAgent' => $agent->PrenomAgent,
+                'SexeAgent' => $agent->SexeAgent,
+                'EmailAgent' => $agent->EmailAgent,
+                'TelAgent' => $agent->TelAgent,
+                'AdresseAgent' => $agent->AdresseAgent,
+                'VilleAgent' => $agent->VilleAgent,
+                'CodePostalAgent' => $agent->CodePostalAgent,
+                'id_agence'=>$agent->id_agence,
+                'NomAgence' => $agent->agenceLocation->NomAgence,
+            ];
+        
+            return response()->json($agent_agencelocation, 200);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'agent not found', 'error' => $e->getMessage()], 404);
+            return response()->json(['message' => 'Agent not found', 'error' => $e->getMessage()], 404);
         }
-    }
+    }        
 
     /**
      * Update the specified resource in storage.

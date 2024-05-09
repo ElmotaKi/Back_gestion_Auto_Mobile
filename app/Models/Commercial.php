@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Commercial extends Model
 {
     use HasFactory;
+    protected $guarded=[]; 
     public function societe()
     {
-        return $this->belongsTo(Societe::class);
+        return $this->belongsTo(Societe::class,'id_societe');
     }
 }
