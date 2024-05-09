@@ -12,13 +12,13 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 class ExportxlsxController extends Controller
 {
-    public function exportAgentsXlsx(Request $request)
+    public function exportAgentsXlsx(Request $request ,$model)
     {
         $selectedColumns = $request->input('columns', []);
-    
         // Récupérer tous les agents
-        $agents = Agent::all();
-    
+        if($model=="Agent"){
+            $agents = Agent::all();
+        }``
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
     
@@ -55,21 +55,26 @@ class ExportxlsxController extends Controller
         return \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($columnIndex);
     }
 
-    public function exportAgentspdf(Request $request)
+    public function exportAgentspdf(Request $request , $model)
     {
         $selectedColumns = $request->input('columns', []);
     
         // Récupérer tous les agents
-        $agents = Agent::all();
-    
+        if($model=="Agent"){
+            $agents = Agent::all();
+        }    
         $pdf = new Dompdf();
         $options = new Options();
         $options->set('isHtml5ParserEnabled', true);
         $pdf->setOptions($options);
     
         // Générer le contenu HTML du PDF
-        $html = '<table>';
-        $html .= '<thead><tr>';
+        $html = '<style>';
+    $html .= 'table { border-collapse: collapse; }';
+    $html .= 'table, th, td { border: 1px solid black; }'; // Ajouter des bordures
+    $html .= '</style>';
+    $html .= '<table>';
+    $html .= '<thead><tr>';
         foreach ($selectedColumns as $column) {
             $html .= '<th>' . $column . '</th>';
         }
@@ -95,8 +100,58 @@ class ExportxlsxController extends Controller
         $pdf->render();
     
         // Télécharger le PDF
-        $pdf->stream('agents.pdf');
+        $output = $pdf->output();
+
+        // Envoyer le PDF en tant que réponse HTTP pour le téléchargement
+        return response($output)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename="agents.pdf"');
+    }
+    public function print(Request $request,$model)
+    {
+        // Générez le contenu du PDF
+        $pdfContent = $this->generatePDFContent($request->input('columns'),$model);
+
+        // Générez le fichier PDF
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($pdfContent);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+
+        // Retournez le contenu du PDF
+        return response()->json(['url' => 'data:application/pdf;base64,' . base64_encode($dompdf->output())]);
+    }
+
+    private function generatePDFContent($columns,$model)
+    {
+        // Générez le contenu du PDF en fonction des colonnes sélectionnées
+        // Exemple :
+        $html = '<table border="1">';
+        $html .= '<tr>';
+        foreach ($columns as $column) {
+            $html .= '<th>' . $column . '</th>';
+        }
+        $html .= '</tr>';
+    
+        // Récupérez les agents avec seulement les colonnes sélectionnées
+        if($model=="Agent"){
+            $agents = Agent::select($columns)->get();
+        }
+        
+    
+        foreach ($agents as $agent) {
+            $html .= '<tr>';
+            foreach ($columns as $column) {
+                $html .= '<td>' . $agent->$column . '</td>';
+            }
+            $html .= '</tr>';
+        }
+    
+        $html .= '</table>';
+    
+        return $html;
     }
     
+
 
 }

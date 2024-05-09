@@ -4,6 +4,10 @@ use App\Http\Controllers\AgenceLocationController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\CommercialController;
+
+use App\Http\Controllers\DashController;
+use App\Http\Controllers\Exportation\ExportxlsxController;
+
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\VehiculeController;
 use App\Models\Parking;
@@ -42,14 +46,18 @@ Route::apiResources([
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::middleware('auth:sanctum')->post('/auth/logout', [AuthController::class, 'logoutUser']);
-Route::post('/exportxlsx', [ExportxlsxController::class, 'exportAgentsXlsx'])->name('exportxlsx');
-Route::post('/exportpdf', [ExportxlsxController::class, 'exportAgentspdf'])->name('exportpdf');
+//exportation des fichier
 
-// Route::get('/export', [ExportxlsxController::class, 'exportAgents'])->name('export');
+Route::post('/exportxlsx/{model}', [ExportxlsxController::class, 'exportAgentsXlsx'])->name('exportxlsx');
+Route::post('/exportpdf/{model}', [ExportxlsxController::class, 'exportAgentspdf'])->name('exportpdf');
+Route::post('/print/{model}', [ExportxlsxController::class, 'print'])->name('print');
+
+//les route de dashbord
+Route::get('/nbrclient', [\App\Http\Controllers\Dashbord\DashController::class, 'nbrClient'])->name('nbrclient');
+Route::get('/nbragent', [\App\Http\Controllers\Dashbord\DashController::class, 'nbragent'])->name('nbragent');
+Route::get('/nbrparking', [\App\Http\Controllers\Dashbord\DashController::class, 'nbrParking'])->name('nbrparking');
+Route::get('/nbrvoi', [\App\Http\Controllers\Dashbord\DashController::class, 'nbrVoit'])->name('nbrvoi');
 
 
 
 
-// Route::get('/csrf-cookie', function (Request $request) {
-//     return response()->json(['csrf_token' => csrf_token()]);
-// });
