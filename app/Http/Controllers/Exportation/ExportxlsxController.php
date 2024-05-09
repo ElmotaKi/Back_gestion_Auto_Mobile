@@ -18,7 +18,7 @@ class ExportxlsxController extends Controller
         // Récupérer tous les agents
         if($model=="Agent"){
             $agents = Agent::all();
-        }
+        }``
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
     
