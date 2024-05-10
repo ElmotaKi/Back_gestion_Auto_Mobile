@@ -16,8 +16,8 @@ class AgentController extends Controller
     public function index()
     {
         try {
-            $agents = Agent::all();
-            return response()->json(['agents' => $agents], 200);
+            $agents = Agent::with('agenceLocation')->get();
+            return response()->json([$agents], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'An error occurred while fetching agencies', 'error' => $e->getMessage()], 500);
         }
