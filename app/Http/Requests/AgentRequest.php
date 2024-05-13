@@ -34,7 +34,8 @@ class AgentRequest extends FormRequest
                 'PrenomAgent' => 'string|max:50',
                 'SexeAgent' => 'in:Masculin,Feminin',
                 // garantit que l'email de l'agent est unique dans la table des agents, sauf pour l'agent actuellement en cours de mise à jour.
-                'EmailAgent' => ['string','email','max:255',Rule::unique('agents')->ignore($agentId)],
+                // 'EmailAgent' => ['string','email','max:255',Rule::unique('agents')->ignore($agentId)],
+                'EmailAgent'=>['string','email','max:255'],
                 'TelAgent' => 'string|max:20',
                 'AdresseAgent' => 'string|max:255',
                 'VilleAgent' => 'string|max:50',
