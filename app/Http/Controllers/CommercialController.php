@@ -17,13 +17,24 @@ class CommercialController extends Controller
      */
     public function index()
     {
-        $commercials = Commercial::all();
+        $commercials = Commercial::with("societe")->get();
         return response()->json($commercials, 200);
     }
 
     /**
      * Store a newly created resource in storage.
-     */
+     */public function store(CommercialRequest $request)
+    {
+        try {
+            $validatedData = $request->validate($request->rules());
+            $commercial = Commercial::create($validatedData);
+            return response()->json(['commercial' =>  $commercial], 201);
+        } catch (QueryException $e) {
+            return response()->json(['message' => 'Error creating agent', 'error' => $e->getMessage()], 500);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Validation error', 'error' => $e->getMessage()], 422);
+        }
+    }
   public function show(string $id)
     {
         try {

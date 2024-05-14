@@ -18,7 +18,7 @@ class ClientParticulierController extends Controller
     {
         try {
             $ClientParticuliers = ClientParticulier::all();
-            return response()->json(['ClientParticuliers' => $ClientParticuliers], 200);
+            return response()->json([ $ClientParticuliers], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'An error occurred while fetching individual client', 'error' => $e->getMessage()], 500);
         }

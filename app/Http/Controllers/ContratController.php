@@ -18,7 +18,7 @@ class ContratController extends Controller
     {
         try {
             $Contrats = Contrat::all();
-            return response()->json(['Contrats' => $Contrats], 200);
+            return response()->json([ $Contrats], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'An error occurred while fetching Contract ', 'error' => $e->getMessage()], 500);
         }
