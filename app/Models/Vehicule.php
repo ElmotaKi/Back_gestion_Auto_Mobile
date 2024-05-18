@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -7,10 +8,32 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vehicule extends Model
 {
+    protected $fillable = [
+        'Marque',
+        'Model',
+        'Categorie',
+        'Kilometrage',
+        'Pneumatique',
+        'NumeroDechassis',
+        'Immatriculation',
+        'DateD_achat',
+        'numeroDePlace',
+        'Disponibilité',
+        'jourTitulaire',
+        'Montant',
+        'MontantRestantApayer',
+        'ImageVoiture',
+        'typeBoiteVitesse',
+        'annee',
+        'placeAssure',
+        'typeCarburant',
+        'id_agence',
+        'id_parking',
+    ];
     use HasFactory;
     public function agenceLocation()
     {
-        return $this->belongsTo(AgenceLocation::class);
+        return $this->belongsTo(AgenceLocation::class,'id_agence');
     }
 
     public function location()
@@ -20,7 +43,7 @@ class Vehicule extends Model
 
     public function parking()
     {
-        return $this->belongsTo(Parking::class);
+        return $this->belongsTo(Parking::class,'id_parking');
     }
 
     public function visiteTechniques()

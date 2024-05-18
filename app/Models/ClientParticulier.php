@@ -11,7 +11,7 @@ class ClientParticulier extends Model
     protected $fillable = [
         'Nom',
         'Prenom',
-        'sexe',
+        'Sexe',
         'Email',
         'DateNaissance',
         'Tel',

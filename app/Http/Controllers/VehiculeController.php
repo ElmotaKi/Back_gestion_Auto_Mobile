@@ -1,89 +1,89 @@
 <?php
 
+
+
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Vehicule\StoreVehiculeRequest;
+use App\Http\Requests\Vehicule\UpdateVehiculeRequest;
 use App\Http\Requests\VehiculeRequest;
-use App\Models\Vehicule;
 use Illuminate\Database\QueryException;
-
+use App\Models\Vehicule;
+use Illuminate\Http\Request;
+use Illuminate\Support\Fascades\Log;
 class VehiculeController extends Controller
 {
     /**
-     * Afficher la liste des véhicules.
+     * Display a listing of the resource.
      */
     public function index()
     {
         try {
-            $vehicules = Vehicule::with('agenceLocation')->get();
-            return response()->json($vehicules, 200);
+            $vehicules = Vehicule::with("agenceLocation", "parking")->get();
+            return response()->json([ $vehicules], 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            return response()->json(['message' => 'An error occurred while fetching  vehicule', 'error' => $e->getMessage()], 500);
         }
     }
 
     /**
-     * Stocker un nouveau véhicule.
+     * Store a newly created resource in storage.
      */
     public function store(VehiculeRequest $request)
     {
         try {
             $validatedData = $request->validate($request->rules());
-            $vehicule = Vehicule::create($validatedData);
-            return response()->json($vehicule, 201);
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
-
-    /**
-     * Afficher les détails d'un véhicule spécifique.
-     */
-    public function show(string $id)
-    {
-        try {
-            $vehicule = Vehicule::findOrFail($id);
-            return response()->json($vehicule, 200);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Véhicule non trouvé'], 404);
-        }
-    }
-
-    /**
-     * Mettre à jour les détails d'un véhicule spécifique.
-     */
-    public function update(VehiculeRequest $request, string $id)
-    {
-        // try {
-        //     $vehicule = Vehicule::findOrFail($id);
-        //     $validatedData = $request->validate($request->rules());
-        //     $vehicule->update($validatedData);
-        //     return response()->json($vehicule, 200);
-        // } catch (\Exception $e) {
-        //     return response()->json(['error' => $e->getMessage()], 500);
-        // }
-        try {
-            $Vehicule = Vehicule::findOrFail($id);
-            $validatedData = $request->validate($request->rules());
-            $Vehicule->update($validatedData);
-            return response()->json(['Vehicule' => $Vehicule], 200);
+            $Vehicule = Vehicule::create($validatedData);
+            return response()->json(['Vehicule' => $Vehicule], 201);
         } catch (QueryException $e) {
-            return response()->json(['message' => 'Error updating vehicule', 'error' => $e->getMessage()], 500);
+            return response()->json(['message' => 'Error creating Vehicule', 'error' => $e->getMessage()], 500);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Validation error', 'error' => $e->getMessage()], 422);
         }
     }
 
     /**
-     * Supprimer un véhicule spécifique.
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        try {
+          
+            $Vehicule  = Vehicule::findOrFail($id);
+            return response()->json(['Vehicule' => $Vehicule], 200);
+            } catch (\Exception $e) {
+            return response()->json(['message' => 'individual client not found', 'error' => $e->getMessage()], 404);
+    }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(VehiculeRequest $request, string $id)
+    {
+        try {
+            $Vehicule = Vehicule::findOrFail($id);
+            $validatedData = $request->validate($request->rules());
+            $Vehicule->update($validatedData);
+            return response()->json(['Vehicule' => $Vehicule], 200);
+        } catch (QueryException $e) {
+            return response()->json(['message' => 'Error updating individual Vehicule', 'error' => $e->getMessage()], 500);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Validation error', 'error' => $e->getMessage()], 422);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         try {
-            $vehicule = Vehicule::findOrFail($id);
-            $vehicule->delete();
-            return response()->json(['message' => 'Véhicule supprimé avec succès'], 200);
+            $Vehicule = Vehicule::findOrFail($id);
+            $Vehicule->delete();
+            return response()->json(['message' => ' Vehicule deleted successfully'], 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            return response()->json(['message' => 'An error occurred while deleting Vehicule', 'error' => $e->getMessage()], 500);
         }
     }
 }

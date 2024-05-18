@@ -18,7 +18,7 @@ class AgenceLocationController extends Controller
     {
         try {
             $agences = AgenceLocation::all();
-            return response()->json(['agences' => $agences], 200);
+            return response()->json(['agences', $agences], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'An error occurred while fetching agencies', 'error' => $e->getMessage()], 500);
         }
