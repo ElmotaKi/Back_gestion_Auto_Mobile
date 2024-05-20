@@ -9,6 +9,7 @@ use App\Models\Agent;
 use App\Models\ClientParticulier;
 use App\Models\Commercial;
 use App\Models\Contrat;
+use App\Models\Parking;
 use App\Models\Societe;
 use App\Models\Vehicule;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -24,10 +25,9 @@ class ExportxlsxController extends Controller
 
     // Récupérer tous les agents
     if ($model == "Agent") {
-       
         // Retrieve agents with their associated AgenceLocation and select the desired columns
-        $agents = Agent::with('agenceLocation:NomAgence')->get($selectedColumns);
-    } elseif ($model == "AgenceLocation") {
+        $agents = Agent::with('agenceLocation')->get();
+    } elseif ($model == "Agence") {
         // Retrieve all AgenceLocations
         $agents = AgenceLocation::all($selectedColumns);
     }
@@ -80,7 +80,10 @@ class ExportxlsxController extends Controller
             else if($column=="Vehicule"){
                 
                 $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->Vehicule->Marque);
-            } 
+            }
+            else if($model == "Parking"){
+                $agents=Parking::all();
+            }
             else {
                 $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->{$column});
             }
@@ -111,12 +114,12 @@ class ExportxlsxController extends Controller
     
         // Récupérer tous les agents
         if ($model == "Agent") {
-            $agents = Agent::with('agenceLocation')->get('NomAgence');
+            $agents = Agent::with('agenceLocation')->get();
         }
         elseif ($model == "Vehicule") {
             $agents = Vehicule::with('agenceLocation','parking')->get();
         }
-         elseif ($model == "AgenceLocation") {
+         elseif ($model == "Agence") {
             $agents = AgenceLocation::all();
         }
         else if($model == "ClientParticulier"){
@@ -130,6 +133,9 @@ class ExportxlsxController extends Controller
         }
         else if($model == "Societe"){
             $agents=Societe::get();
+        }
+        else if($model == "Parking"){
+            $agents=Parking::all();
         }
         else {
             return response()->json(['error' => 'Invalid model'], 400);
@@ -152,7 +158,7 @@ class ExportxlsxController extends Controller
             font-size: 10px; /* Taille de la police plus petite */
         }';
         $html .= '@page { 
-            size: A4; /* Taille de la page */
+            size: A2; /* Taille de la page */
             margin: 0; /* Pas de marges */
         }';
         $html .= '</style>';
@@ -166,7 +172,25 @@ class ExportxlsxController extends Controller
         foreach ($agents as $agent) {
             $html .= '<tr>';
             foreach ($selectedColumns as $column) {
-                $html .= '<td>' . $agent->{$column} . '</td>';
+                if($column=='Societe'){
+
+                    $html .= '<td>' . $agent->societe->RaisonSocial  . '</td>';
+                }
+                else if($column=='Agence' ){
+
+                    $html .= '<td>' . $agent->agenceLocation->NomAgence  . '</td>';
+                }
+                else if($column=='Agence' || $column=='NomAgence'){
+
+                    $html .= '<td>' . $agent->agenceLocation->NomAgence  . '</td>';
+                }
+                else if($column == "Lieu"){
+                    $html .= '<td>' . $agent->parking->Lieu . '</td>';
+                }
+                else{
+
+                    $html .= '<td>' . $agent->{$column} . '</td>';
+                }
             }
             $html .= '</tr>';
         }
@@ -199,7 +223,7 @@ class ExportxlsxController extends Controller
         // Générez le fichier PDF
         $dompdf = new Dompdf();
         $dompdf->loadHtml($pdfContent);
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->setPaper('A2', 'landscape');
         $dompdf->render();
 
         // Retournez le contenu du PDF
@@ -231,7 +255,7 @@ class ExportxlsxController extends Controller
         // Récupérez les agents avec seulement les colonnes sélectionnées
         if ($model == "Agent") {
             $agents = Agent::all();
-        } elseif ($model == "AgenceLocation") {
+        } elseif ($model == "Agence") {
             $agents = AgenceLocation::all();
         }
         else if($model == "ClientParticulier"){
@@ -249,10 +273,13 @@ class ExportxlsxController extends Controller
         else if ($model == "Societe") {
             $agents = Societe::get();
         }
+        else if($model == "Parking"){
+            $agents=Parking::all();
+        }
         foreach ($agents as $agent) {
             $html .= '<tr>';
             foreach ($columns as $column) {
-                if ($column == "Agence") {
+                if ($column=='Agence' || $column=='NomAgence') {
                     $html .= '<td>' . $agent->agenceLocation->NomAgence . '</td>';
                 } 
                 else if($column == "Societe"){
@@ -266,6 +293,9 @@ class ExportxlsxController extends Controller
                 }
                 else if($column == "Vehicule"){
                     $html .= '<td>' . $agent->Vehicule->Marque . '</td>';
+                }
+                else if($column == "Lieu"){
+                    $html .= '<td>' . $agent->parking->Lieu . '</td>';
                 }
                 else {
                     $html .= '<td>' . $agent->{$column} . '</td>';
