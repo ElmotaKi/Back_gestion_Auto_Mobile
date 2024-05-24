@@ -17,11 +17,19 @@ class AssuranceRequest extends FormRequest
             // Règles de validation pour la création
             return [
                 // Ajoutez ici les règles de validation pour les champs de création
+                'type_assurance' => 'required|string',
+                'date_assurance' => 'required|date',
+                'date_expiration_assurance' => 'required|date',
+                'id_vehicule' => 'numeric',
             ];
         } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
             // Règles de validation pour la mise à jour
             return [
                 // Ajoutez ici les règles de validation pour les champs de mise à jour
+                'type_assurance' => 'sometimes',
+                'date_assurance' => 'sometimes',
+                'date_expiration_assurance' => 'sometimes',
+                'id_vehicule' => 'sometimes',
             ];
         }
 

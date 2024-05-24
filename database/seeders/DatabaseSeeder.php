@@ -21,8 +21,11 @@ class DatabaseSeeder extends Seeder
             SocieteSeeder::class,
             CommercialSeeder::class,
             ClientParticulierSeeder::class,
-            ContratSeeder::class
-            
+            ContratSeeder::class,
+            AssuranceSeeder::class,
+            VidangeSeeder::class,
+            VignetteSeeder::class,
+            VisiteTechniqueSeeder::class
         ]);
     }
 }

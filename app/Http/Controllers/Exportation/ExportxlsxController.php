@@ -12,6 +12,10 @@ use App\Models\Contrat;
 use App\Models\Parking;
 use App\Models\Societe;
 use App\Models\Vehicule;
+use App\Models\Vidange;
+use App\Models\Assurance;
+use App\Models\Vignette;
+use App\Models\VisiteTechnique;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -31,6 +35,14 @@ class ExportxlsxController extends Controller
         // Retrieve all AgenceLocations
         $agents = AgenceLocation::all($selectedColumns);
     }
+    elseif ($model == "Vidange") {
+        // Retrieve all AgenceLocations
+        $agents = Vidange::with('Vehicule')->get();
+    }
+    elseif ($model == "Assurance") {
+        // Retrieve all AgenceLocations
+        $agents = Assurance::with('Vehicule')->get();
+    }
     else if($model == "ClientParticulier"){
         $agents=ClientParticulier::all();
     }
@@ -45,6 +57,17 @@ class ExportxlsxController extends Controller
     }
     else if($model == "Societe"){
         $agents=Societe::get();
+    }
+    else if($model == "Parking"){
+        $agents=Parking::get();
+    }
+    else if ($model == "Vignette") {
+        // Retrieve all AgenceLocations
+        $agents = Vignette::with('Vehicule')->get();
+    }
+    else if ($model == "VisiteTechnique") {
+        // Retrieve all AgenceLocations
+        $agents = VisiteTechnique::with('Vehicule')->get();
     }
     else {
         return response()->json(['error' => 'Invalid model'], 400);
@@ -77,9 +100,21 @@ class ExportxlsxController extends Controller
             else if($column=="Contrat"){
                 $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->Contrat->nomContrat);
             }
-            else if($column=="Vehicule"){
+            else if($column=="Vidange"){
+                $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->Vidange->TypeVidange);
+            }
+            else if($column=="Assurance"){
+                $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->Assurance->type_assurance);
+            }
+            else if($column=="Vignette"){
+                $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->Vignette->status);
+            }
+            else if($column=="VisiteTechnique"){
+                $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->VisiteTechnique->DateVisite);
+            }
+            else if($column=="Vehicule" || $column=="Immatriculation"){
                 
-                $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->Vehicule->Marque);
+                $sheet->setCellValue($this->getColumnLetter($columnIndex) . $row, $agent->Vehicule->Immatriculation);
             }
             else if($model == "Parking"){
                 $agents=Parking::all();
@@ -131,6 +166,18 @@ class ExportxlsxController extends Controller
         else if($model == "Commercial"){
             $agents=Commercial::with('societe')->get();
         }
+        else if($model == "Vidange"){
+            $agents=Vidange::with('Vehicule')->get();
+        }
+        else if($model == "Assurance"){
+            $agents=Assurance::with('Vehicule')->get();
+        }
+        else if($model == "Vignette"){
+            $agents=Vignette::with('Vehicule')->get();
+        }
+        else if($model == "VisiteTechnique"){
+            $agents=VisiteTechnique::with('Vehicule')->get();
+        }
         else if($model == "Societe"){
             $agents=Societe::get();
         }
@@ -176,16 +223,33 @@ class ExportxlsxController extends Controller
 
                     $html .= '<td>' . $agent->societe->RaisonSocial  . '</td>';
                 }
-                else if($column=='Agence' ){
+                // else if($column=='Agence' ){
 
-                    $html .= '<td>' . $agent->agenceLocation->NomAgence  . '</td>';
-                }
+                //     $html .= '<td>' . $agent->agenceLocation->NomAgence  . '</td>';
+                // }
                 else if($column=='Agence' || $column=='NomAgence'){
 
                     $html .= '<td>' . $agent->agenceLocation->NomAgence  . '</td>';
                 }
-                else if($column == "Lieu"){
+                else if($column == "Parking" || $column == "Lieu"){
                     $html .= '<td>' . $agent->parking->Lieu . '</td>';
+                    if (isset($agent->Parking) && $agent->Parking !== null) {
+                        $html .= '<td>' . $agent->parking->Lieu . '</td>';
+                    } else {
+                        
+                        $html .= '<td>Information non disponible</td>';
+                    }
+                }
+                else if ($column == "Vehicule" || $column == "Immatriculation") {
+                    if (isset($agent->Vehicule) && $agent->Vehicule !== null) {
+                        $html .= '<td>' . $agent->Vehicule->Immatriculation . '</td>';
+                    } else {
+                        
+                        $html .= '<td>Information non disponible</td>';
+                    }
+                }
+                else if($column == "Vidange"){
+                    $html .= '<td>' . $agent->Vidange->TypeVidange . '</td>';
                 }
                 else{
 
@@ -256,7 +320,7 @@ class ExportxlsxController extends Controller
         if ($model == "Agent") {
             $agents = Agent::all();
         } elseif ($model == "Agence") {
-            $agents = AgenceLocation::all();
+            $agents = agenceLocation::all();
         }
         else if($model == "ClientParticulier"){
             $agents=ClientParticulier::all();
@@ -266,6 +330,18 @@ class ExportxlsxController extends Controller
         }
         else if($model == "Commercial"){
             $agents=Commercial::with('societe')->get();
+        }
+        else if($model == "Vidange"){
+            $agents=Vidange::with('Vehicule')->get();
+        }
+        else if($model == "Assurance"){
+            $agents=Assurance::with('Vehicule')->get();
+        }
+        else if($model == "Vignette"){
+            $agents=Vignette::with('Vehicule')->get();
+        }
+        else if($model == "VisiteTechnique"){
+            $agents=VisiteTechnique::with('Vehicule')->get();
         }
         else if($model == "Vehicule"){
             $agents=Vehicule::with('agenceLocation','parking')->get();
@@ -291,11 +367,38 @@ class ExportxlsxController extends Controller
                 else if($column == "Contrat"){
                     $html .= '<td>' . $agent->Contrat->nomContrat . '</td>';
                 }
-                else if($column == "Vehicule"){
-                    $html .= '<td>' . $agent->Vehicule->Marque . '</td>';
+                else if($column == "Parking" || $column == "Lieu"){
+                   
+                    if (isset($agent->Parking) && $agent->Parking !== null) {
+                        $html .= '<td>' . $agent->parking->Lieu . '</td>';
+                    } else {
+                        
+                        $html .= '<td>Information non disponible</td>';
+                    }
                 }
-                else if($column == "Lieu"){
+                 else if ($column == "Vehicule" || $column == "Immatriculation") {
+                    if (isset($agent->Vehicule) && $agent->Vehicule !== null) {
+                        $html .= '<td>' . $agent->Vehicule->Immatriculation . '</td>';
+                    } else {
+                        
+                        $html .= '<td>Information non disponible</td>';
+                    }
+                }
+                
+                else if($column == "Parking" || $column =="Lieu"){
                     $html .= '<td>' . $agent->parking->Lieu . '</td>';
+                }
+                else if($column == "Vidange"){
+                    $html .= '<td>' . $agent->Vidange->TypeVidange . '</td>';
+                }
+                else if($column == "Assurance"){
+                    $html .= '<td>' . $agent->Assurance->type_assurance . '</td>';
+                }
+                else if($column == "Vignette"){
+                    $html .= '<td>' . $agent->Vignette->status . '</td>';
+                }
+                else if($column == "VisiteTechnique"){
+                    $html .= '<td>' . $agent->VisiteTechnique->DateVisite . '</td>';
                 }
                 else {
                     $html .= '<td>' . $agent->{$column} . '</td>';

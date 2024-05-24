@@ -42,7 +42,7 @@ class ClientParticulierRequest extends FormRequest
                 // Ajoutez ici les règles de validation pour les champs de mise à jour
                 'Nom' => 'string|max:50',
                 'Prenom' => 'string|max:100',
-                'Sexe' => 're1quired',
+                'Sexe' => 'string',
                 'DateNaissance' => 'string|max:50',
                 'Tel' => 'string|max:20',
                 'Email' => 'string|email|max:255',

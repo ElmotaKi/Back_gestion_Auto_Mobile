@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('TypeVisite');
             $table->enum('resultat', ['Conforme', 'Non_conforme','Echec']);
             $table->date('DateExpirationVisiteTechnique');
-            $table->foreignId('vehicule_id')->constrained('vehicules')->onDelete('cascade');
+            $table->foreignId('id_vehicule')->constrained('vehicules')->onDelete('cascade');
             $table->timestamps();
 
         });

@@ -7,9 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class VisiteTechnique extends Model
 {
+    protected $fillable = [
+        'DateVisite',
+        'TypeVisite',
+        'resultat',
+        'DateExpirationVisiteTechnique',
+        'id_vehicule', 
+    ];  public $timestamps=false;
     use HasFactory;
     public function vehicule()
     {
-        return $this->belongsTo(Vehicule::class);
+        return $this->belongsTo(Vehicule::class,'id_vehicule');
     }
 }

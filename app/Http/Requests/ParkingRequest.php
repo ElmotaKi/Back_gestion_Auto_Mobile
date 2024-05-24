@@ -19,6 +19,7 @@ class ParkingRequest extends FormRequest
                  'Capacite' => 'required|integer',
                  'pannes' => 'nullable|string',
                  'PlaceRestantes' => 'required|integer',
+                 'Lieu' =>'required|string',
             ];
         } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
             // Règles de validation pour la mise à jour
@@ -26,6 +27,7 @@ class ParkingRequest extends FormRequest
                  'Capacite' => 'integer',
                  'pannes' => 'nullable|string',
                  'PlaceRestantes' => 'integer',
+                 'Lieu' =>'string',
             ];
         }
 

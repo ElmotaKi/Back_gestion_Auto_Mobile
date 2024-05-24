@@ -34,7 +34,7 @@ class AgenceLocationRequest extends FormRequest
                 'VilleAgence' => 'string|max:50',
                 'CodePostalAgence' => 'string|max:50',
                 'TelAgence' => 'string|max:20',
-                'EmailAgence' => 'string|email|max:255|unique:agence_locations,EmailAgence',
+                'EmailAgence' => 'string|email|max:255',
             ];
         }
 
