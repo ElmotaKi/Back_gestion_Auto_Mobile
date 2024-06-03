@@ -16,11 +16,15 @@ return new class extends Migration
             $table->date('dateDebutLocation');
             $table->date('dateFinLocation');
             $table->string('Contrat');
-            $table->integer('NbrVoitureLouees');
+            $table->integer('NbrJours');
             $table->decimal('Montant', 8, 2);
             $table->enum('status',['Complete','encours']);
             $table->date('DateRetourPrevue');
             $table->date('DateRetourVoiture')->nullable();
+            $table->decimal('KilometrageApres', 8, 2)->nullable();
+            $table->decimal('KilometrageAvant', 8, 2);
+            $table->text('ImageAvant');
+            $table->text('ImageApres')->nullable();
             $table->foreignId('id_vehicule')->constrained('vehicules')->onDelete('cascade');
             $table->foreignId('id_contrat')->constrained('contrats')->onDelete('cascade');
             $table->foreignId('id_agent')->constrained('agents')->onDelete('cascade');

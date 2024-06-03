@@ -16,7 +16,13 @@ use App\Http\Controllers\VisiteTechniqueController;
 use App\Http\Controllers\VignetteController;
 use App\Http\Controllers\ClientParticulierController;
 use App\Http\Controllers\ContratController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\pneumatiqueController;
+use App\Http\Controllers\HistoriqueController;
+use App\Http\Controllers\AccidentController;
 // use App\Http\Controllers\Exportation\ExportxlsxController;
+use App\Models\Location;
+use App\Models\Pneumatique;
 use App\Models\Parking;
 use App\Models\Vehicule;
 use App\Models\Vidange;
@@ -26,6 +32,8 @@ use App\Models\Contrat;
 use App\Models\ClientParticulier;
 use App\Models\Societe;
 use App\Models\Commercial;
+use App\Models\Accident;
+use App\Models\Historique;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -58,7 +66,11 @@ Route::apiResources([
     "societes"=>SocieteController::class,
     "commercials"=>CommercialController::class,
     "ClientParticuliers"=>ClientParticulierController::class,
-    "Contrats"=>ContratController::class
+    "Contrats"=>ContratController::class,
+    "locations"=>LocationController::class,
+    "pneumatiques"=>pneumatiqueController::class,
+    "historiques"=>HistoriqueController::class,
+    "accidents"=>AccidentController::class
 ]);
 
 

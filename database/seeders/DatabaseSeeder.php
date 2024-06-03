@@ -25,7 +25,11 @@ class DatabaseSeeder extends Seeder
             AssuranceSeeder::class,
             VidangeSeeder::class,
             VignetteSeeder::class,
-            VisiteTechniqueSeeder::class
+            VisiteTechniqueSeeder::class,
+            LocationSeeder::class,
+            PneumatiqueSeeder::class,
+            HistoriqueSeeder::class,
+            AccidentSeeder::class
         ]);
     }
 }
