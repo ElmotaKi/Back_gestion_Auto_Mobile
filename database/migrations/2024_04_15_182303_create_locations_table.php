@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('Contrat');
             $table->integer('NbrJours');
             $table->decimal('Montant', 8, 2);
-            $table->enum('status',['Complete','encours']);
+            $table->decimal('MontantParJour', 8, 2);
+            $table->enum('status',['terminee','encours']);
             $table->date('DateRetourPrevue');
             $table->date('DateRetourVoiture')->nullable();
             $table->decimal('KilometrageApres', 8, 2)->nullable();

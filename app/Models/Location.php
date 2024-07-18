@@ -13,6 +13,7 @@ class Location extends Model
   'Contrat',
   'NbrJours',
   'Montant',
+  'MontantParJour',
   'status',
   'DateRetourPrevue',
   'DateRetourVoiture',

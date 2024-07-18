@@ -23,12 +23,13 @@ class PneumatiqueSeeder extends Seeder
                 'Etat_Pneu' => 'Bon',
                 'Date_Verification' => '2024-03-15',
                 'Date_Installation' => '2024-01-10',
-                'Date_Changement'=> '2024-03-25' ,
+                // 'Date_Changement'=> '' ,
                 'kilometrage_Verification' => '50000',
                 'kilometrage_Installation' => '52000',
-                'kilometrage_Final'=>'70000',
+                'kilometrage_Final' => '70000',
                 'Historique_Reparations' => 'Aucune',
-                'id_vehicule' => '1',   
+                'id_vehicule' => '1',
+                'Date_Fin_Pneu' => '2025-01-10'   
             ],
             [
                 'Marque_Pneu'=> 'Bridgestone',
@@ -44,7 +45,8 @@ class PneumatiqueSeeder extends Seeder
                  'kilometrage_Installation'=> '45000',
                  'kilometrage_Final'=>'70000',
                  'Historique_Reparations'=> 'Réparation_crevaison_le_2024-01-15',
-                 'id_vehicule'=> '2'
+                 'id_vehicule'=> '2',
+                 'Date_Fin_Pneu' => '2024-06-06'
             ],
             [
                 'Marque_Pneu'=> 'Goodyear',
@@ -60,7 +62,8 @@ class PneumatiqueSeeder extends Seeder
                 'kilometrage_Installation'=> '30000',
                 'kilometrage_Final'=>'70000',
                 'Historique_Reparations'=> 'Remplacement_de_valve_le_2024-05-01',
-                'id_vehicule'=> '3'
+                'id_vehicule'=> '3',
+                'Date_Fin_Pneu' => '2025-07-10'
             ],
             
            

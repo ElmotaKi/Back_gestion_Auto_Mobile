@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('Etat_Pneu');
             $table->date('Date_Verification');
             $table->date('Date_Installation');
-            $table->date('Date_Changement');
+            $table->date('Date_Changement')->nullable();
+            $table->date('Date_Fin_Pneu');
             $table->string('kilometrage_Verification');
             $table->string('kilometrage_Installation');
             $table->string('kilometrage_Final');

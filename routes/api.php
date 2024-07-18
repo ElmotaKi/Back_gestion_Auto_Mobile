@@ -77,13 +77,13 @@ Route::apiResources([
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::middleware('auth:sanctum')->post('/auth/logout', [AuthController::class, 'logoutUser']);
-// Route::post('/exportxlsx', [ExportxlsxController::class, 'exportAgentsXlsx'])->name('exportxlsx');
-// Route::post('/exportpdf', [ExportxlsxController::class, 'exportAgentspdf'])->name('exportpdf');
+
 
 Route::post('/exportxlsx/{model}', [ExportxlsxController::class, 'exportAgentsXlsx'])->name('exportxlsx');
 Route::post('/exportpdf/{model}', [ExportxlsxController::class, 'exportAgentspdf'])->name('exportpdf');
 Route::post('/print/{model}', [ExportxlsxController::class, 'print'])->name('print');
-
+Route::post('/printContrat', [ExportxlsxController::class, 'printContrat']);
+Route::post('/printContratWord', [ExportxlsxController::class, 'printContratWord']);
 //les route de dashbord
 Route::get('/nbrclient', [\App\Http\Controllers\Dashbord\DashController::class, 'nbrClient'])->name('nbrclient');
 Route::get('/nbragent', [\App\Http\Controllers\Dashbord\DashController::class, 'nbragent'])->name('nbragent');
